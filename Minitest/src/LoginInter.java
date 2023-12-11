@@ -30,47 +30,79 @@ public class LoginInter {
     }
 
     private static void showMenu() {
-        int choice = -1;
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        int choice;
 
-        while (choice != 0) {
-            System.out.println("Menu");
-            System.out.println("1. Draw a rectangle");
-            System.out.println("2. Draw a right triangle");
-            System.out.println("3. Draw an isosceles triangle");
-            System.out.println("0. Exit");
-            System.out.print("Nhập lựa chọn của bạn: ");
-            choice = input.nextInt();
+        do {
+            System.out.println("Menu:");
+            System.out.println("1. Vẽ hình chữ nhật");
+            System.out.println("2. Vẽ tam giác vuông");
+            System.out.println("3. Vẽ tam giác cân");
+            System.out.println("0. Thoát");
+            System.out.print("Nhập lựa chọn : ");
+            choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    System.out.println("Vẽ hình chữ nhật");
-                    System.out.println("* * * * * ");
-                    System.out.println("* * * * * ");
-                    System.out.println("* * * * * ");
+                    drawRectangle();
                     break;
                 case 2:
-                    System.out.println("Vẽ tam giác vuông");
-                    System.out.println("* ");
-                    System.out.println("* * ");
-                    System.out.println("* * * ");
-                    System.out.println("* * * * ");
-                    System.out.println("* * * * * ");
+                    drawRightTriangle();
                     break;
                 case 3:
-                    System.out.println("Vẽ tam giác cân");
-                    System.out.println("      *     ");
-                    System.out.println("     * *    ");
-                    System.out.println("    * * *   ");
-                    System.out.println("   * * * *  ");
-                    System.out.println("  * * * * * ");
+                    drawIsoscelesTriangle();
                     break;
                 case 0:
-                    System.exit(0);
+                    System.out.println("Thoát ");
+                    break;
                 default:
-                    System.out.println("Vui lòng chọn đúng.");
+                    System.out.println("Vui lòng chọn lại.");
             }
+        } while (choice != 0);
+    }
+
+    private static void drawRectangle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập chiều rộng: ");
+        int width = scanner.nextInt();
+        System.out.print("Nhập chiều cao: ");
+        int height = scanner.nextInt();
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static void drawRightTriangle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập cạnh góc vuông : ");
+        int side = scanner.nextInt();
+        for (int i = 0; i < side; i++) {
+            for (int j = 0; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static void drawIsoscelesTriangle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập chiều cao : ");
+        int height = scanner.nextInt();
+        System.out.print("Nhập cạnh đáy : ");
+        int base = scanner.nextInt();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < base; j++) {
+                if (j >= (base - 1) / 2 - i && j <= (base - 1) / 2 + i) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
         }
     }
 }
-
