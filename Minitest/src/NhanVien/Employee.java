@@ -45,6 +45,10 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+    public double getPayment(){
+        return 0 ;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
